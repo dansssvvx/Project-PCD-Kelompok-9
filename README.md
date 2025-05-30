@@ -1,9 +1,9 @@
 # JUDUL PROJECT PCD
 ## Nama Anggota
-###  AHMAD RAMADHANI R 		: F1D02310102
-###  AMALIA MIRASAFITRI 	: F1D02310002
-###  KEVIN MUAMMAR GATHFAN  	: F1D02310067
-###  SYAZWANI			: F1D02310140
+###  AHMAD RAMADHANI R : F1D02310102
+###  AMALIA MIRASAFITRI : F1D02310002
+###  KEVIN MUAMMAR GATHFAN : F1D02310067
+###  SYAZWANI : F1D02310140
 
 # Project Overview
 Pada project PCD ini, Anda akan melakukan experiment kalsifikasi dengan menggunakan dataset yang telah Anda siapkan sebelumnya. Hal ini bertujuan untuk:
