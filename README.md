@@ -1,10 +1,10 @@
 # JUDUL PROJECT PCD
 ## Nama Anggota
-###  siA : F1D000000
-###  siB : F1D000000
-###  siC : F1D000000
+###  AHMAD RAMADHANI R 		: F1D02310102
+###  AMALIA MIRASAFITRI 	: F1D02310002
+###  KEVIN MUAMMAR GATHFAN  	: F1D02310067
+###  SYAZWANI			: F1D02310140
 
-# JANGAN LUPA KASI MARKDOWN YA
 # Project Overview
 Pada project PCD ini, Anda akan melakukan experiment kalsifikasi dengan menggunakan dataset yang telah Anda siapkan sebelumnya. Hal ini bertujuan untuk:
 - Menguji kemampuan Anda dalam mengimplemetasikan teknik pengolahan citra digital untuk melakukan klasifikasi citra.
