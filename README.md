@@ -1,4 +1,4 @@
-# JUDUL PROJECT PCD
+# Klasifikasi Basofil dan Segmented Neutrophil Berdasarkan Tekstur untuk Prediksi Awal Leukemia Menggunakan Teknik GLCM
 ## Nama Anggota
 ###  AHMAD RAMADHANI R : F1D02310102
 ###  AMALIA MIRASAFITRI : F1D02310002
