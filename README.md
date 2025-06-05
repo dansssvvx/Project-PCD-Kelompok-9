@@ -1,33 +1,40 @@
-# Klasifikasi Basofil dan Segmented Neutrophil Berdasarkan Tekstur untuk Prediksi Awal Leukemia Menggunakan GLCM
+# Klasifikasi Basofil dan Segmented Neutrophil Berdasarkan Tekstur untuk Prediksi Awal Leukemia Menggunakan GLCM
+
 ## Nama Anggota
-###  SYAZWANI : F1D02310140
-###  KEVIN MUAMMAR GATHFAN : F1D02310067
-###  AHMAD RAMADHANI R : F1D02310102
-###  AMALIA MIRASAFITRI : F1D02310002
+### SYAZWANI : F1D02310140
+### KEVIN MUAMMAR GATHFAN : F1D02310067
+### AHMAD RAMADHANI R : F1D02310102
+### AMALIA MIRASAFITRI : F1D02310002
 
 # Project Overview
-Pada project PCD ini, Anda akan melakukan experiment kalsifikasi dengan menggunakan dataset yang telah Anda siapkan sebelumnya. Hal ini bertujuan untuk:
-- Menguji kemampuan Anda dalam mengimplemetasikan teknik pengolahan citra digital untuk melakukan klasifikasi citra.
-- Memilih tahapan preprocessing yang tepat sesuai dengan karakteristik data yang ada.
+Proyek ini merupakan eksperimen klasifikasi citra sel darah (Basofil dan Neutrophil tersegmentasi) berdasarkan fitur tekstur menggunakan Gray Level Co-occurrence Matrix (GLCM). Tujuan utama proyek ini adalah menguji kemampuan implementasi teknik pengolahan citra digital untuk klasifikasi, serta pemilihan tahapan preprocessing yang tepat sesuai dengan karakteristik data.
 
-Pemilihan preprocessing haruslah menggunakan preprocessing yang telah Anda lakukan selama praktikum Modul 1 - 5. Setelah itu, Anda akan melakukan feature extraction dan juga pembuatan model klasifikasi.
-Perlu di perhatikan bahwa yang menjadi acuan pada project ini adalah tepatnya pemilihan `preprocessing` dan proses `extraction feature` yang dilakukan. Jadi, Anda tidak perlu khawatir dengan hasil akhir akurasi yang mungkin tidak bagus. Selain itu, untuk melihat pemahaman Anda dalam menganalisis, Anda akan melakukan eksperimen sebanyak 3 kali percobaan dengan notebook yang berbeda (format notebook terdapat pada template). Pada setiap percobaannya, Anda diharuskan melakukan improvement pada setiap preprocessing yang telah Anda buat sebelumnya. Anda dapat melakukan improvement dengan cara menyesuaikan jumlah preprocessing pada setiap percobaan. Misalnya, project Anda akan menggunakan total 5 Preprocessing (pre1, pre2, pre3, pre4, pre 5), maka:
-- Percobaan Pertama (2 Preprocessing menggunakan pre1, pre2)
-- Percobaan Kedua (4 Preprocessing menggunakan pre1, pre2, pre3, pre4)
-- Percobaan Ketiga (5 Preprocessing menggunakan pre1, pre2, pre3, pre4, pre5)
+Proses klasifikasi akan mencakup tahapan umum Machine Learning, mulai dari *data loading*, *preprocessing*, *feature extraction*, *feature selection*, *splitting data*, *normalization*, *modeling*, hingga *evaluation*. Fokus utama dalam proyek ini adalah ketepatan pemilihan teknik *preprocessing* dan proses *feature extraction*.
 
-Lalu dari setiap percobaan, lihatlah bagaimana perbedaan akurasinya untuk setiap model, Random Forest berapa, SVM berapa, KNN berapa. Berikut ini adalah Tahapan Umum yang digunakan dalam Machine Learning.
+Kami akan melakukan tiga kali percobaan dengan konfigurasi *preprocessing* yang berbeda untuk melihat bagaimana setiap penyesuaian memengaruhi akurasi model klasifikasi.
 
-~ SELAMAT DATANG DI LAB 1 ~
+# Tahapan Umum dalam Machine Learning
 
-# IMPORT LIBRARY
-Anda mengimport library yang dibutuhkan di cell code ini, Anda tidak harus mengikuti dan menggunakan seluruh library yang ada pada template. Library pada template adalah library umum yang sekiranya sering digunakan pada Machine Learning dalam konteks klasifikasi, jadi gunakan library yang diperlukan saja ya.
-``` python
-  import library
-  import library as lib
-  import library.library as lib
-  from library.library_yang_saya_butuhkan import library, library
+## Import Library
+Pada bagian ini, semua library Python yang dibutuhkan untuk proyek ini diimpor. Ini mencakup pustaka untuk manipulasi gambar (OpenCV, scikit-image), manipulasi data (NumPy, Pandas), visualisasi (Matplotlib, Seaborn), dan algoritma Machine Learning (Scikit-learn).
+
+```python
+import os
+import cv2 as cv
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split, cross_val_predict
+from sklearn.metrics import accuracy_score, classification_report
+from skimage.feature import graycomatrix, graycoprops
+from scipy.stats import entropy
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import (confusion_matrix, ConfusionMatrixDisplay)
+import seaborn as sns
 ```
+
 # Load Data
 Setelah import library, dilanjutkan dengan tahapan membaca dataset. Pada praktikum modul 1 - 5 Anda pernah membaca beberapa image ke dalam code. Pada project ini, Anda tidak hanya akan membaca 1 atau 2 image saja, tetapi ratusan bahkan ribuan image pada dataset yang Anda gunakan. Bukan hanya image, tapi Anda juga akan berurusan dengan label setiap image, jadi sesuaikan code pada template dengan dataset label (label adalah nama setiap folder pada dataset Anda yang berisi image) yang Anda miliki. Pertama-tama lakukanlah data loading (baca dataset) beserta labelnya, Anda bisa melakukan penyeragaman ukuran dari dataset dengan resize, jika ukuran setiap image berbeda pada datset Anda. Misalnya ada yang 100x200, 300x100 maka Anda harus mengubahnya ke ukuran yang sama misalnya 100x100 atau 150x150. Sekedar informasi semakin besar ukuran setiap image, maka proses loadingnya pun akan semakin lama, jadi usahakan juga ukuran image rendah, CMIIW~
 ``` python
