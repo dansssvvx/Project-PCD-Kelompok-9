@@ -13,8 +13,6 @@ Proses klasifikasi akan mencakup tahapan umum Machine Learning, mulai dari *data
 
 Kami akan melakukan tiga kali percobaan dengan konfigurasi *preprocessing* yang berbeda untuk melihat bagaimana setiap penyesuaian memengaruhi akurasi model klasifikasi.
 
-# Tahapan Umum dalam Machine Learning
-
 ## Import Library
 Pada bagian ini, semua library Python yang dibutuhkan untuk proyek ini diimpor. Ini mencakup pustaka untuk manipulasi gambar (OpenCV, scikit-image), manipulasi data (NumPy, Pandas), visualisasi (Matplotlib, Seaborn), dan algoritma Machine Learning (Scikit-learn).
 
